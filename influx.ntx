@@ -1,0 +1,75 @@
+##
+# My notes file
+# @Author	Ing. Martin Bortel
+# @Date		13/12/2017
+# @Update	
+# @Type		[NOTE]
+#
+# @Topic	
+##
+-- general {{
+$ sudo apt install influxdb influxdb-client 
+$ influxd
+$ influx
+> show databases
+> create mydb
+> use mydb
+> show tables
+> show measurements
+
+eo:general }}
+-- almost like SQL {{
+#
+# commands samples, how to
+#
+create database mydb
+
+create database tmp
+drop database tmp
+
+delete from cpu where valuse = 11 limit 1
+drop measurement from cpu where valuse = 11 limit 1
+
+exit
+help drop measurement
+
+insert cpu,host=server1,location=cz value=10
+insert cpu,host=server1,location=london value=11
+insert cpu,host=server1,location=london valuse=11
+insert cpu,host=server2,location=cz-east value=12
+insert cpu,host=serverA value=10
+insert cpu,host=serverA value=10
+insert cpu.host=server1,location=cz value=10
+insert into cpu host=serverA value=10
+insert into mydb cpu,host=serverA value=10
+insert into mydb cpu,host=serverA value=10
+
+select * from cpu
+select value from cpu where time > '2016-11-01 00:00:00.000' and time < '2017-12-04'
+select value from cpu where time > '2016-11-01 00:00:00.000' and time < '2017-12-05'
+select value from cpu where time > now() - 1year
+select value from cpu where time > now() - 1year limit 1000
+select value from cpu where time > now() - 30day limit 4
+select value from cpu where time > now() - 3day limit 4
+select value from cpu where time > now() - 90day
+select value from cpu where time > now() - 90day limit 1000
+select value from cpu where time > now() - 90day limit 4
+select value from cpu where time > now()-1 limit 1000
+select value from cpu where time > now()-1h limit 1000
+select value from cpu where time > now()-1y limit 1000
+select value from cpu where time > now()-1year limit 1000
+
+show databases
+show measurements
+show series
+show tables
+
+use mydb
+
+history
+
+
+eo:almost like SQL }}
+-- xxx {{
+
+eo:xxx }}
